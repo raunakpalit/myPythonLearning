@@ -26,21 +26,21 @@ vocabulary = {"QUIT": "Q",
               "EAST": "E",
               "WEST": "W"}
 
-# loc = 1
-# while True:
-#     availableExits = ", ".join(exits[loc].keys())
-#     print("Available exits are: {}".format(availableExits))
-#     user_input = input("Enter the direction you want to go from the above choices: ").upper()
-#     if len(user_input) > 1:
-#         for word in vocabulary:
-#             if word in user_input:
-#                 user_input = vocabulary[word]
-#     loc = exits[loc][user_input]
-#     if user_input == "Q":
-#         break
-#     if user_input in availableExits:
-#         usr_location = locations[loc]
-#         print(usr_location)
-#     else:
-#         print("You cannot go in that direction.")
+loc = 1
+while True:
+    availableExits = ", ".join(exits[loc].keys())
+    print("Available exits are: {}".format(availableExits))
+    user_input = input("Enter the direction you want to go from the above choices: ").upper()
+    if len(user_input) > 1:
+        for word in vocabulary:
+            if word in user_input:
+                user_input = vocabulary[word]
+    loc = exits[loc][user_input]
+    if user_input == "Q":
+        break
+    if user_input in availableExits:
+        usr_location = locations[loc]
+        print(usr_location)
+    else:
+        print("You cannot go in that direction.")
     
