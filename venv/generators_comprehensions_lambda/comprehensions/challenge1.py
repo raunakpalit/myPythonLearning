@@ -27,4 +27,3 @@ print(output)
 # type the corresponding comprehension here:
 output = [(x, len(x)) for x in text.split()]
 print(output)
-
