@@ -187,12 +187,123 @@ class LinkedList:
             
             cur_node = cur_node.next
 
+    def print_nth_from_last(self, n):
+        # Method 1
+        total_length = self.length()
+        cur = self.head
+        while cur:
+            if total_length == n:
+                print(cur.data)
+                return cur
+            total_length -= 1
+            cur = cur.next
+        if cur is None:
+            return
 
-# llist = LinkedList()
+    def count_occurences(self, n):
+        count = 0
+        cur = self.head
+        while cur:
+            if cur.data == n:
+                count +=1
+            cur = cur.next
+        return count
+
+    def rotate(self, n):
+        p = self.head
+        q = self.head
+
+        prev = None
+        count = 0
+
+        while p and count < n:
+            prev = p
+            p = p.next
+            q = q.next
+            count += 1
+        p = prev
+        while q:
+            prev = q
+            q = q.next
+        q = prev
+        
+        q.next = self.head
+        self.head = p.next
+        p.next = None
+
+    def is_palindrome(self):
+        # Method 1
+        s = ""
+        p = self.head
+        while p:
+            s += p.data
+            p = p.next
+        return s == s[::-1]
+
+    def move_tail_to_head(self):
+        last = self.head
+        second_to_last = None
+
+        while last.next:
+            second_to_last = last
+            last = last.next
+        last.next = self.head
+        second_to_last.next = None
+        self.head = last
+
+    def sum_two_lists(self, llist2):
+        p = self.head
+        q = llist2.head
+
+        sum_list = LinkedList()
+
+        carry = 0
+        while p or q:
+            if not p:
+                i = 0
+            else:
+                i = p.data
+            if not q:
+                j = 0
+            else:
+                j = q.data
+            s = i + j + carry
+            if s >= 10:
+                carry = 1
+                remainder = s % 10
+                sum_list.append(remainder)
+            else:
+                carry = 0
+                sum_list.append(s)
+            if p:
+                p = p.next
+            if q:
+                q = q.next
+            
+        sum_list.print_list()
+
+
+llist = LinkedList()
+llist.append(5)
+llist.append(6)
+llist.append(3)
+
+llist2 = LinkedList()
+llist2.append(8)
+llist2.append(4)
+llist2.append(2)
+
+print(365 + 248)
+llist.sum_two_lists(llist2)
 # llist.append("A")
 # llist.append("B")
 # llist.append("C")
 # llist.append("D")
+
+# llist.print_list()
+# llist.move_tail_to_head()
+# llist.print_list()
+# print(llist.print_nth_from_last(2))
 # llist.reverse_list()
 # # llist.swap_nodes("B", "D")
 # # llist.prepend("E")
@@ -219,19 +330,38 @@ class LinkedList:
 # llist1.merge_list(llist2)
 # llist1.print_list()
 
-llist = LinkedList()
-llist.append(1)
-llist.append(6)
-llist.append(1)
-llist.append(4)
-llist.append(2)
-llist.append(2)
-llist.append(4)
-llist.append(4)
-llist.append(4)
-llist.append(9)
-llist.append(9)
-llist.prepend(50)
+# llist = LinkedList()
+# llist.append(1)
+# llist.append(2)
+# llist.append(3)
+# llist.append(4)
+# llist.append(5)
+# llist.append(6)
 
-llist.remove_duplicates()
-llist.print_list()
+# llist.rotate(4)
+# llist.print_list()
+
+# print(llist.count_occurences(4))
+# llist.append(4)
+# llist.append(4)
+# llist.append(9)
+# llist.append(9)
+# llist.prepend(50)
+
+# llist.remove_duplicates()
+# llist.print_list()
+
+# llist = LinkedList()
+# llist.append("R")
+# llist.append("A")
+# llist.append("D")
+# llist.append("A")
+# llist.append("R")
+
+# llist2 = LinkedList()
+# llist2.append("A")
+# llist2.append("B")
+# llist2.append("C")
+
+# print(llist.is_palindrome())
+# print(llist2.is_palindrome())
