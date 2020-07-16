@@ -13,6 +13,20 @@ pipeline {
         stage("build") {
             steps {
                 echo "Building the application..."
+                script {
+                    checkout changelog: false,
+                    poll: false,
+                    scm: [$class: 'GitSCM',
+                          branches: [[name: "master"]],
+                          doGenerateSubmoduleConfigurations: false,
+                          extensions: [[$class: 'SparseCheckoutPaths',
+                          sparseCheckoutPaths: [[path: 'resources/store.py']]]],
+                          submoduleCfg: [],
+                          userRemoteConfigs: [
+                             [credentialsId: 'Lieutenant@1'
+                              url: 'https://github.com/raunakpalit/stores-rest-api']]
+                          }
+                }
             }
         }
         stage("test") {
