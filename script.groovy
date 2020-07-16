@@ -2,8 +2,10 @@ def testApp() {
     echo "Testing the application..."
     directory1 = pwd()
     echo "Direct is ${directory1}"
-    content = list()
-    echo "content is ${content}"
+    dh = new File('.')
+    dh.eachFile {
+        println(it)
+    }
 
     File myFile = new File("test.py")
     println myFile.text
