@@ -25,7 +25,7 @@ pipeline {
                           userRemoteConfigs: [
                              [credentialsId: 'Lieutenant@1',
                               url: 'https://github.com/raunakpalit/stores-rest-api']]
-                          }
+                          ]
                 }
             }
         }
