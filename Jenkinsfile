@@ -20,7 +20,7 @@ pipeline {
                           branches: [[name: "master"]],
                           doGenerateSubmoduleConfigurations: false,
                           extensions: [[$class: 'SparseCheckoutPaths',
-                          sparseCheckoutPaths: [[path: 'Section 6/code/app.py']]]],
+                          sparseCheckoutPaths: [[path: 'Section%203/app.py']]]],
                           submoduleCfg: [],
                           userRemoteConfigs: [
                              [credentialsId: '51b67fe3-c792-4d4a-8999-866c4b9fb73e',
