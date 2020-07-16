@@ -24,7 +24,7 @@ pipeline {
                           submoduleCfg: [],
                           userRemoteConfigs: [
                              [credentialsId: '51b67fe3-c792-4d4a-8999-866c4b9fb73e',
-                              url: 'https://github.com/raunakpalit/stores-rest-api']]
+                              url: 'https://github.com/raunakpalit/stores-rest-api.git']]
                           ]
                 }
             }
