@@ -32,7 +32,8 @@ pipeline {
         stage("test") {
             steps {
                 echo "Testing the application..."
-                sh "python fetchTest.py"
+                workspace = pwd()
+                echo "workspace is ${workspace}"
             }
         }
         stage("deploy") {
