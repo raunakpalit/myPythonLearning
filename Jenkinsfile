@@ -23,7 +23,7 @@ pipeline {
                           sparseCheckoutPaths: [[path: 'resources/store.py']]]],
                           submoduleCfg: [],
                           userRemoteConfigs: [
-                             [credentialsId: 'Lieutenant@1'
+                             [credentialsId: 'Lieutenant@1',
                               url: 'https://github.com/raunakpalit/stores-rest-api']]
                           }
                 }
