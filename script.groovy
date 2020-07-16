@@ -2,7 +2,7 @@ def testApp() {
     echo "Testing the application..."
     directory1 = pwd()
     echo "Direct is ${directory1}"
-    content = dir
+    content = list()
     echo "content is ${content}"
 
     File myFile = new File("test.py")
