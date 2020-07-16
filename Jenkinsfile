@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+def gv
+
 pipeline {
     agent any
 
@@ -10,6 +12,14 @@ pipeline {
 
 
     stages {
+        stage("Init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
+
         stage("build") {
             steps {
                 echo "Building the application..."
@@ -31,9 +41,9 @@ pipeline {
         }
         stage("test") {
             steps {
-                echo "Testing the application..."
-                workspace = pwd()
-                echo "workspace is ${workspace}"
+                script {
+                    gv.testApp()
+                }
             }
         }
         stage("deploy") {
