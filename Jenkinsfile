@@ -32,6 +32,7 @@ pipeline {
         stage("test") {
             steps {
                 echo "Testing the application..."
+                sh "python fetchTest.py"
             }
         }
         stage("deploy") {
