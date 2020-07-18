@@ -1,10 +1,17 @@
 def testApp() {
     echo "Testing the application..."
-    directory1 = pwd()
-    echo "Direct is ${directory1}"
+    workspace = pwd()
+    echo "Workspace: ${workspace}"
+    def exists = fileExists 'test.py'
+    if (exists) {
+        echo 'Yes'
+            }
+    else {
+        echo 'No'
+    }
 
-    File myFile = new File("test.py")
-    println myFile.text
+    def data = readFile(file: 'test.py')
+    println(data)
 }
 
 return this
