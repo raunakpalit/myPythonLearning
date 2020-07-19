@@ -12,14 +12,6 @@ pipeline {
 
 
     stages {
-        stage("Init") {
-            steps {
-                script {
-                    gv = load "script.groovy"
-                }
-            }
-        }
-
         stage("build") {
             steps {
                 echo "Building the application..."
@@ -37,20 +29,8 @@ pipeline {
                              [credentialsId: '51b67fe3-c792-4d4a-8999-866c4b9fb73e',
                               url: 'https://github.com/raunakpalit/RestAPI_Flask.git']]
                           ]
-
+                    bat "python projectDjango/djangobasic/testJenkinsTest.py"
                 }
-            }
-        }
-        stage("test") {
-            steps {
-                script {
-                    gv.testApp()
-                }
-            }
-        }
-        stage("deploy") {
-            steps {
-                echo "Deploying the application..."
             }
         }
     }
