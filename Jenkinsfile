@@ -34,6 +34,7 @@ pipeline {
                     }
                 }
                 bat "python projectDjango/djangobasic/testJenkinsTest.py"
+                bat "rmdir projectTest"
             }
         }
     }
