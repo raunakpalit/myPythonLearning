@@ -14,10 +14,10 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                echo "Building the application..."
-                bat "mkdir projectTest"
-                dir("projectTest"){
-                    script {
+                script {
+                    echo "Building the application..."
+                    bat "mkdir projectTest"
+                    dir("projectTest"){
                         checkout changelog: false,
                         poll: false,
                         scm: [$class: 'GitSCM',
@@ -31,10 +31,11 @@ pipeline {
                                   url: 'https://github.com/raunakpalit/RestAPI_Flask.git']]
                               ]
 
-                    }
+                        }
+
+                    bat "python projectDjango/djangobasic/testJenkinsTest.py"
+                    bat "rmdir /q /s projectTest"
                 }
-                bat "python projectDjango/djangobasic/testJenkinsTest.py"
-                bat "rmdir /q /s projectTest"
             }
         }
     }
