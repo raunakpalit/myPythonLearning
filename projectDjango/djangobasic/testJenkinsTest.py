@@ -6,7 +6,7 @@ print(parent_dir)
 
 jenkinsfilepath = "{}/Jenkinsfile".format(parent_dir)
 readmepath = "{}/README.md".format(parent_dir)
-testfilepath = "{}/test.py".format(parent_dir)
+testfilepath = "{}/projectTest/test.py".format(parent_dir)
 
 print("Jenkinsfile exists: {}".format(os.path.exists(jenkinsfilepath)))
 print("Readme exists: {}".format(os.path.exists(readmepath)))

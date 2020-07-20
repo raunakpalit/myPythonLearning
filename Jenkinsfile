@@ -15,22 +15,25 @@ pipeline {
         stage("build") {
             steps {
                 echo "Building the application..."
-                script {
+                bat "mkdir projectTest"
+                dir("projectTest"){
+                    script {
+                        checkout changelog: false,
+                        poll: false,
+                        scm: [$class: 'GitSCM',
+                              branches: [[name: "master"]],
+                              doGenerateSubmoduleConfigurations: false,
+                              extensions: [[$class: 'SparseCheckoutPaths',
+                              sparseCheckoutPaths: [[path: 'test.py']]]],
+                              submoduleCfg: [],
+                              userRemoteConfigs: [
+                                 [credentialsId: '51b67fe3-c792-4d4a-8999-866c4b9fb73e',
+                                  url: 'https://github.com/raunakpalit/RestAPI_Flask.git']]
+                              ]
 
-                    checkout changelog: false,
-                    poll: false,
-                    scm: [$class: 'GitSCM',
-                          branches: [[name: "master"]],
-                          doGenerateSubmoduleConfigurations: false,
-                          extensions: [[$class: 'SparseCheckoutPaths',
-                          sparseCheckoutPaths: [[path: 'test.py']]]],
-                          submoduleCfg: [],
-                          userRemoteConfigs: [
-                             [credentialsId: '51b67fe3-c792-4d4a-8999-866c4b9fb73e',
-                              url: 'https://github.com/raunakpalit/RestAPI_Flask.git']]
-                          ]
-                    bat "python projectDjango/djangobasic/testJenkinsTest.py"
+                    }
                 }
+                bat "python projectDjango/djangobasic/testJenkinsTest.py"
             }
         }
     }
