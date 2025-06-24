@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                // script {
+                script {
                     // echo "Building the application..."
                     // bat "mkdir projectTest"
                     // dir("projectTest"){
