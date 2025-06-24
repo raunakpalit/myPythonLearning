@@ -1,2 +1,2 @@
 name = "Raunak Palit"
-print("Hello World! {} welcomes you.".forma(name))
+print("Hello World! {} welcomes you.".format(name))
