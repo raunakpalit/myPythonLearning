@@ -2,6 +2,6 @@
 #     return istr.replace(ichar, '')
 
 def remove_character(istr, ichr):
-    return istr.replace(ichar, '')
+    return istr.replace(ichr, '')
 
 print(remove_character('racunak', 'c'))
